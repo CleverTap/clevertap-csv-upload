@@ -64,7 +64,6 @@ def main(account_id, passcode, path, type, dryrun):
     clevertap = CleverTap(account_id, passcode)
     data = []
 
-    print type
     if type not in ["event", "profile"]:
         raise Exception("unknown record type %s" % type)
         return

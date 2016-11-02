@@ -4,7 +4,8 @@
 to upload user profiles from a csv:
 - git clone the repo
 - cd to the python directory
-- run csvupload.py passing your CleverTap Account ID and Passcode and the absolute path to your csv file.  Add -d true to do a dry run.
+- run csvupload.py passing your CleverTap Account ID and Passcode and the absolute path to your csv file. 
+- Add -d true to do a dry run.
 -  e.g. ./csvupload.py -a WWW-YYY-ZZZZ -c AAA-BBB-CCCC -p ~/Desktop/profileSample.csv
 
 ```

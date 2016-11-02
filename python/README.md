@@ -20,7 +20,7 @@ optional arguments:
                         Do a dry run, process records but do not upload
 ```
 
-NOTE:  you must include one of Identity, Email, FBID or GPID in your data.
+NOTE:  you must include one of identity, Email, FBID or GPID in your data.
 
 ### TODO
 - add support for Events

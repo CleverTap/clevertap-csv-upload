@@ -9,10 +9,12 @@ import ast
 IDENTITY_FIELDS = ["identity", "FBID", "GPID", "objectId"]
 
 MAX_BATCH_SIZE = 100
-MAX_PROPS = 63
+MAX_PROPS = {"event":31, "profile":63}
 
 def process_raw_record(raw_record, type):
     identity = False
+    ts = 0
+    evtName = None
     
     record = {"type": type}
 
@@ -38,7 +40,22 @@ def process_raw_record(raw_record, type):
                 record[k] = v 
             continue
 
-        if (prop_count < MAX_PROPS):
+        if type == "event":
+            if k == "evtName":
+                evtName = k
+                record[k] = v 
+                continue
+
+            if k == "ts":
+                try:
+                    ts = int(float(v))
+                    record[k] = ts 
+                    continue
+                except Exception, e:
+                    print "invalid event timestamp %s" % v
+                    return None
+
+        if (prop_count < MAX_PROPS[type]):
             if "Phone" in k:  
                 if k == "Phone" and not v.startswith("+"):
                     v = "+%s" % v
@@ -55,7 +72,15 @@ def process_raw_record(raw_record, type):
 
     if not identity:
         print "no identity value found for %s" % raw_record
-        record = None
+        return None
+
+    if type == "event":
+        if evtName is None:
+            print "no event name value found for %s" % raw_record
+            return None
+
+        if ts <= 0:
+            print "no timestamp provided, will default to current time for %s" % raw_record
 
     return record
     
@@ -66,10 +91,6 @@ def main(account_id, passcode, path, type, dryrun):
 
     if type not in ["event", "profile"]:
         raise Exception("unknown record type %s" % type)
-        return
-
-    if type == "event":
-        raise NotImplementedError("Event handling not yet implemented")
         return
 
     f = open(path, 'rt')

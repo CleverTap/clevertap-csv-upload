@@ -6,6 +6,7 @@ to upload user profiles from a csv:
 - cd to the python directory
 - run csvupload.py passing your CleverTap Account ID and Passcode and the absolute path to your csv file. 
 - Add -d true to do a dry run.
+- Add -t to specify type of data: event or profile (defaults to profile)
 -  e.g. ./csvupload.py -a WWW-YYY-ZZZZ -c AAA-BBB-CCCC -p ~/Desktop/profileSample.csv
 
 ```

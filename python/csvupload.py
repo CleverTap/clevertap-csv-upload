@@ -40,20 +40,20 @@ def process_raw_record(raw_record, type):
                 record[k] = v 
             continue
 
+        if k == "ts":
+            try:
+                ts = int(float(v))
+                record[k] = ts 
+                continue
+            except Exception, e:
+                print "invalid %s timestamp %s" % (type,v)
+                return None
+
         if type == "event":
             if k == "evtName":
                 evtName = k
                 record[k] = v 
                 continue
-
-            if k == "ts":
-                try:
-                    ts = int(float(v))
-                    record[k] = ts 
-                    continue
-                except Exception, e:
-                    print "invalid event timestamp %s" % v
-                    return None
 
         if (prop_count < MAX_PROPS[type]):
             if "Phone" in k:  

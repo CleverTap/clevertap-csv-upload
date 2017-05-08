@@ -24,6 +24,3 @@ optional arguments:
 
 NOTE:  you must include one of identity, Email, objectID, FBID or GPID, in your data.
 'Email' column won't work when uploading profiles. Please upload profiles against one of identity, objectID, FBID or GPID
-
-### TODO
-- add support for Events

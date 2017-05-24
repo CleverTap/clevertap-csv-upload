@@ -57,7 +57,7 @@ def process_raw_record(raw_record, type):
 
         if (prop_count < MAX_PROPS[type]):
             if "Phone" in k:  
-                if k == "Phone" and not v.startswith("+"):
+                if k == "Phone" and not v.startswith("+") and v:
                     v = "+%s" % v
                 record_data_dict[k] = v
 

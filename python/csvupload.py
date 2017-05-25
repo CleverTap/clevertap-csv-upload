@@ -34,6 +34,8 @@ def process_raw_record(raw_record, type):
 
     prop_count = 0
     for k,v in raw_record.iteritems():
+	if v is None or v == "":
+            continue
         if k in IDENTITY_FIELDS:
             if not identity:
                 identity = True

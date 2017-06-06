@@ -34,8 +34,9 @@ def process_raw_record(raw_record, type):
 
     prop_count = 0
     for k,v in raw_record.iteritems():
-	if v is None or v == "":
+        if v is None or v == "":
             continue
+
         if k in IDENTITY_FIELDS:
             if not identity:
                 identity = True
@@ -64,10 +65,14 @@ def process_raw_record(raw_record, type):
                 record_data_dict[k] = v
 
             else:
+                record_data_dict[k] = v
+                # try and convert strings that look like numbers to number type
                 try:
-                    record_data_dict[k] = ast.literal_eval(v)
+                    _v = ast.literal_eval(v)
+                    if not isinstance(_v, complex): 
+                        record_data_dict[k] = _v
                 except Exception, e:
-                    record_data_dict[k] = v
+                    pass
             prop_count += 1
         else:
             print "property count max of %s exceeded, skipping %s" % (MAX_PROPS,k)
@@ -99,7 +104,11 @@ def main(account_id, passcode, path, type, dryrun):
     try:
         reader = csv.DictReader(f)
         for row in reader:
-            record = process_raw_record(row, type)
+            try:
+                record = process_raw_record(row, type)
+            except Exception, e:
+                print e
+
             if record is not None:
                 if dryrun:
                     print record

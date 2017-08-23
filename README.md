@@ -15,6 +15,7 @@ optional arguments:
   -c PASSCODE, --passcode PASSCODE
                         CleverTap Account Passcode
   -p PATH, --path PATH  Absolute path to the csv file
+  -m MAPPINGPATH, --mappingpath MAPPINGPATH  Absolute path to a custom key json mapping
   -t TYPE, --type TYPE  The type of data, either profile or event, defaults to
                         profile
   -d DRYRUN, --dryrun DRYRUN

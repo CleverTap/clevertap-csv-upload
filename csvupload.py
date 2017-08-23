@@ -39,7 +39,7 @@ def process_raw_record(raw_record, type, mapping=None):
     max = MAX_PROPS[type]
     prop_count = 0
     for k,v in raw_record.iteritems():
-        if v is None or v == "":
+        if v in [None, "", "null"]:
             continue
 
         if k in IDENTITY_FIELDS:

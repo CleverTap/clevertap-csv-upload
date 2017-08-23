@@ -1,7 +1,7 @@
 ## CleverTap python csv upload tool
 
 ### Usage
-to upload user profiles from a csv:
+to upload user profile or events from a csv:
 - git clone the repo
 - cd to the python directory
 - run csvupload.py passing your CleverTap Account ID and Passcode and the absolute path to your csv file. 

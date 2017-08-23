@@ -22,5 +22,4 @@ optional arguments:
                         Do a dry run, process records but do not upload
 ```
 
-NOTE:  you must include one of identity, Email, objectID, FBID or GPID, in your data.
-'Email' column won't work when uploading profiles. Please upload profiles against one of identity, objectID, FBID or GPID
+NOTE:  you must include one of identity, objectID, FBID or GPID, in your data.  Email addresses can serve as an identity value, but the key must be identity.

@@ -386,21 +386,5 @@ class CleverTap(object):
                         return validation_error
                         break
 
-        if type == "profiles":
-            # event_name is a compulsory parameter
-            if "event_name" not in data:
-                validation_error = "Event Name is missing"
-                return validation_error
-
-            # from is a compulsory parameter
-            if "from" not in data:
-                validation_error = "\'From\' is missing"
-                return validation_error
-
-            # to is a compulsory parameter
-            if "to" not in data:
-                validation_error = "\'To\' is missing"
-                return validation_error
-
         return validation_error
 

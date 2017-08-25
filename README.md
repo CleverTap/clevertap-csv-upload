@@ -9,17 +9,15 @@ to upload user profile or events from a csv:
 -  e.g. ./csvupload.py -a WWW-YYY-ZZZZ -c AAA-BBB-CCCC -p ~/Desktop/profileSample.csv
 
 ```
-optional arguments:
-  -h, --help            show this help message and exit
-  -a ID, --id ID        CleverTap Account ID
-  -c PASSCODE, --passcode PASSCODE
-                        CleverTap Account Passcode
-  -p PATH, --path PATH  Absolute path to the csv file
-  -m MAPPINGPATH, --mappingpath MAPPINGPATH  Absolute path to a custom key json mapping
-  -t TYPE, --type TYPE  The type of data, either profile or event, defaults to
-                        profile
-  -d DRYRUN, --dryrun DRYRUN
-                        Do a dry run, process records but do not upload
+arguments:
+  -h, --help                                    show this help message and exit
+  -a ID, --id ID                                CleverTap Account ID
+  -c PASSCODE, --passcode PASSCODE              CleverTap Account Passcode
+  -r REGION, --region REGION                    Dedicated CleverTap Account Region, optional
+  -p PATH, --path PATH                          Absolute path to the csv file
+  -m MAPPINGPATH, --mappingpath MAPPINGPATH     Absolute path to a custom key json mapping
+  -t TYPE, --type TYPE                          The type of data, either profile or event, defaults to profile
+  -d DRYRUN, --dryrun DRYRUN                    Do a dry run, process records but do not upload
 ```
 
 NOTE:  you must include one of identity, objectID, FBID or GPID, in your data.  Email addresses can serve as an identity value, but the key must be identity.

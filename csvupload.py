@@ -42,6 +42,13 @@ def process_raw_record(raw_record, type, mapping=None):
         if v in [None, "", "null"]:
             continue
 
+        try:
+            _v = ast.literal_eval(v)
+            if not isinstance(_v, complex):
+                v = _v
+        except Exception, e:
+            pass
+
         if k in IDENTITY_FIELDS:
             if not identity:
                 identity = True
@@ -75,13 +82,6 @@ def process_raw_record(raw_record, type, mapping=None):
         if k == "Phone" and not v.startswith("+"):
             v = "+%s" % v
 
-        try:
-            _v = ast.literal_eval(v)
-            if not isinstance(_v, complex): 
-                v = _v
-        except Exception, e:
-            pass
-            
         if isinstance(v, dict) or isinstance(v, list):
             try:
                 v =  json.dumps(v)
